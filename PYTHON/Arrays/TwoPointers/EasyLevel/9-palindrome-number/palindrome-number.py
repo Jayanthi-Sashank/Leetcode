@@ -1,8 +1,15 @@
-class Solution:
-    def isPalindrome(self, x: int) -> bool:
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
         x=str(x)
-        d=x[::-1]
-        if x==d:
-            return True
-        else:
-            return False
+        left=0
+        right=len(x)-1
+        while(left<right):
+            if x[left]!=x[right]:
+                return False
+            left=left+1
+            right=right-1
+        return True
