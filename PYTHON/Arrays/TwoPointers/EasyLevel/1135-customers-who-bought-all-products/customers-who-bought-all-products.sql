@@ -1,5 +1,8 @@
-# Write your MySQL query statement below
-select customer_id
-from customer
-group by customer_id
-having count(distinct product_key) in (select count(product_key) from product)
+/* Write your T-SQL query statement below */
+
+select c.customer_id
+from customer c
+left join product p
+on c.product_key=p.product_key
+group by c.customer_id
+having count(distinct c.product_key) in (select count(*) from product p)
