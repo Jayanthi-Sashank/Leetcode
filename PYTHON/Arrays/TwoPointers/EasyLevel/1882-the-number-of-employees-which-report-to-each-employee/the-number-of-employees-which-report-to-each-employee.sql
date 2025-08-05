@@ -1,5 +1,7 @@
-select mgr.employee_id, mgr.name, COUNT(emp.employee_id) as reports_count, ROUND(AVG(emp.age)) as average_age
-from employees emp join employees mgr
-on emp.reports_to = mgr.employee_id
-group by employee_id
-order by employee_id
+/* Write your T-SQL query statement below */
+select E.employee_id,E.name,count(M.reports_to)as reports_count,round(avg(M.age*1.0),0) as average_age
+from employees E
+join employees M
+on E.employee_id=M.reports_to
+group by E.name,E.employee_id
+order by E.employee_id asc
