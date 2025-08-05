@@ -1,12 +1,6 @@
-# Write your MySQL query statement below
-SELECT 
-    project_id,
-    ROUND(AVG(experience_years), 2) AS average_years
-FROM 
-    Project p
-JOIN 
-    Employee e
-ON 
-    p.employee_id = e.employee_id
-GROUP BY 
-    project_id
+/* Write your T-SQL query statement below */
+select project_id,round(avg(experience_years*1.0),2) as average_years
+from Employee e
+join Project p
+on e.employee_id=p.employee_id
+group by project_id
