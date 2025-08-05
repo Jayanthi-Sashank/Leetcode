@@ -1,7 +1,5 @@
 /* Write your T-SQL query statement below */
-
-select w1.id
-from Weather w1
-join weather w2
-on w1.recordDate=DATEADD(day,1,w2.recordDate)
-where w1.temperature>w2.temperature
+select W2.id
+from Weather W1
+join Weather W2
+on W2.temperature>W1.temperature and datediff(DD,W1.recordDate,W2.recordDate)=1
