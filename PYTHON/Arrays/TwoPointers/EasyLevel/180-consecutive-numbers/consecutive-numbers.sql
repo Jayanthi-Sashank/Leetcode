@@ -1,7 +1,15 @@
 /* Write your T-SQL query statement below */
 with cte as(
-select id ,num,
-case when num=lead(num) over(order by id) and num=lead(num,2) over(order by id) then num else num+1 end as  ConsecutiveNum
-from logs
+select id, num, case when num=lead(num) over( order by id) and num=lead(num,2) over(order by id) then num end as number
+from Logs
+),
+cte1 as (
+select number as ConsecutiveNums
+from cte
+where number is not null
 )
-select num as ConsecutiveNums from cte where num=ConsecutiveNum group by num having count(ConsecutiveNum)>=1
+select ConsecutiveNums
+from cte1
+group by ConsecutiveNums
+having count(*)>=1
+
